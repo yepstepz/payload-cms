@@ -15,15 +15,18 @@
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.484.0",
+    "@aws-sdk/lib-storage": "^3.484.0",
     "@payloadcms/bundler-webpack": "latest",
-    "@payloadcms/db-mongodb": "latest",
-    "@payloadcms/plugin-cloud": "^0.0.10",
+    "@payloadcms/db-postgres": "latest",
+    "@payloadcms/plugin-cloud-storage": "^1.1.1",
+    "@payloadcms/richtext-lexical": "^0.5.0",
     "@payloadcms/richtext-slate": "latest",
+    "aws-crt": "^1.20.0",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "payload": "beta",
-    "@payloadcms/db-postgres": "latest"
+    "payload": "^2.5.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",

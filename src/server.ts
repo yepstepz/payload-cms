@@ -10,9 +10,6 @@ app.get('/', (_, res) => {
 })
 
 const start = async () => {
-
-  console.log("Database ", process.env.DATABASE_URI);
-  
   // Initialize Payload
   await payload.init({
     secret: process.env.PAYLOAD_SECRET,
@@ -24,7 +21,7 @@ const start = async () => {
 
   // Add your own express routes here
 
-  app.listen(3000)
+  app.listen(4444)
 }
 
 start()
