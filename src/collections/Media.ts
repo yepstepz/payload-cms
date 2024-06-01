@@ -5,6 +5,9 @@ export const Media: CollectionConfig = {
     slug: 'media',
     upload: {
         staticDir: path.resolve(__dirname, '../../media'),
+        resizeOptions: {
+            fit: 'cover'
+        },
     },
     access: {
         read: () => true,
@@ -14,6 +17,10 @@ export const Media: CollectionConfig = {
             name: 'alt',
             type: 'text',
             required: true,
+        },
+        {
+            name: 'caption',
+            type: 'text',
         },
     ],
 }

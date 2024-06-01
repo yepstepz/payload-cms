@@ -2,14 +2,13 @@ import path from 'path'
 
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
-import { slateEditor } from '@payloadcms/richtext-slate'
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import { buildConfig } from 'payload/config'
+import { buildConfig } from "payload/config";
+
 import {
-  BlocksFeature,
-  LinkFeature,
   UploadFeature,
 } from '@payloadcms/richtext-lexical';
+import { CodeBlockFeature } from "payload-code-block-feature";
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
 
@@ -25,6 +24,7 @@ const adapter = s3Adapter({
   bucket: process.env.S3_BUCKET,
 })
 
+import Socials from './collections/Socials'
 import Users from './collections/Users'
 import Notes from './collections/Notes'
 import Media from './collections/Media'
@@ -49,6 +49,7 @@ export default buildConfig({
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
         ...defaultFeatures,
+      CodeBlockFeature(),
       UploadFeature({
         collections: {
           uploads: {
@@ -66,7 +67,7 @@ export default buildConfig({
       }),
     ]
   }),
-  collections: [Users, Notes, Media, Tags],
+  collections: [Socials, Users, Notes, Media, Tags],
   plugins: [
     cloudStorage({
       collections: {

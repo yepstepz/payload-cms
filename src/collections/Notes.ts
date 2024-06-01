@@ -1,12 +1,34 @@
 import { CollectionConfig } from 'payload/types'
+import { ReplyContext } from "./fields/reply-context";
+import { OgContent } from "./fields/og-content";
+import { SocialMessage } from "./fields/social-message";
 
+// @ts-ignore
 const Notes: CollectionConfig = {
     slug: 'notes',
     access: { read: () => true },
     admin: {
-        useAsTitle: 'title_text',
+        useAsTitle: 'titleForAdmin'
     },
     fields: [
+        {
+            name: 'status',
+            type: 'select',
+            options: [
+                {
+                    value: 'draft',
+                    label: 'Draft',
+                },
+                {
+                    value: 'published',
+                    label: 'Published',
+                },
+            ],
+            defaultValue: 'draft',
+            admin: {
+                position: 'sidebar',
+            }
+        },
         {
             name: 'title', // required
             type: 'group', // required
@@ -22,7 +44,20 @@ const Notes: CollectionConfig = {
                     type: 'checkbox',
                     defaultValue: true
                 },
-            ],
+            ]
+        },
+        {
+            name: 'titleForAdmin',
+            type: 'text',
+            label: 'Title for Admin',
+            admin: {
+                hidden: true,
+                disableBulkEdit: true
+            },
+            hooks: {
+                beforeChange: [({ data }) => data.title.text],
+                afterRead: [({ data }) => data.title.text]
+            }
         },
         {
             name: 'content',
@@ -39,19 +74,11 @@ const Notes: CollectionConfig = {
         },
         {
             name: 'og', // required
-            type: 'group', // required
-            label: 'OG Tags', // optional
-            fields: [
-                {
-                    name: 'type',
-                    type: 'text',
-                    required: true
-                },
-                {
-                    name: 'title',
-                    type: 'text',
-                    required: true
-                }
+            type: 'blocks', // required
+            minRows: 1,
+            maxRows: 20,
+            blocks: [
+                OgContent,
             ],
         },
         {
@@ -69,11 +96,31 @@ const Notes: CollectionConfig = {
             }
         },
         {
+            name: 'replyContexts',
+            type: 'blocks',
+            minRows: 1,
+            maxRows: 20,
+            blocks: [
+                ReplyContext,
+            ],
+        },
+        {
             name: 'tags',
             label: 'Tags',
             type: 'relationship',
             relationTo: 'tags',
             hasMany: true,
+            admin: {
+                position: 'sidebar',
+            }
+        },
+        {
+            name: 'socialMessages',
+            label: 'Social Messages',
+            type: 'blocks',
+            blocks: [
+                SocialMessage
+            ],
             admin: {
                 position: 'sidebar',
             }
