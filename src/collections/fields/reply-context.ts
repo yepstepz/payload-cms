@@ -1,3 +1,5 @@
+import { Block } from "payload/types";
+
 const types = [
   {
     label: 'Reply',
@@ -21,7 +23,7 @@ const types = [
   },
 ]
 
-export const ReplyContext = {
+export const ReplyContext: Block = {
   slug: 'Reply', // required
   interfaceName: 'ReplyBlock', // optional
   fields: [

@@ -1,4 +1,6 @@
-export const OgContent = {
+import { Block } from "payload/types";
+
+export const OgContent: Block = {
   slug: 'Og',
   interfaceName: 'OgContent',
   fields: [

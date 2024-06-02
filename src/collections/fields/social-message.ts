@@ -1,4 +1,6 @@
-export const SocialMessage = {
+import { Block } from "payload/types";
+
+export const SocialMessage: Block = {
   slug: 'SocialMessage',
   fields: [
     {

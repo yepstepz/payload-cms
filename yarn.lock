@@ -5327,6 +5327,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz"
@@ -6040,6 +6045,13 @@ pause@0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz"
   integrity sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==
+
+payload-code-block-feature@^0.0.0-alpha.0:
+  version "0.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/payload-code-block-feature/-/payload-code-block-feature-0.0.0-alpha.0.tgz#e5744cb387d4df22c3bf7c1c3c63f3b829b2edfc"
+  integrity sha512-i5yXmcoQqUxXa56hDFBTGQQZYdiMx7X5KDBABQcVATbBGpyogSsBueMZKR++zMIQycSdKyPqqUAFejVuGLggIw==
+  dependencies:
+    lodash-es "^4.17.21"
 
 payload@^2.5.0:
   version "2.5.0"
