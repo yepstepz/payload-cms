@@ -6,7 +6,7 @@ export const SocialMessage: Block = {
     {
         type: 'relationship',
         relationTo: 'socials',
-        name: 'social',
+        name: 'socialEntity',
     },
     {
       name: 'description',
@@ -16,6 +16,10 @@ export const SocialMessage: Block = {
       name: 'shareTo',
       type: 'checkbox',
       defaultValue: true
+    },
+    {
+      name: 'syndicatedTo',
+      type: 'text'
     },
   ]
 }

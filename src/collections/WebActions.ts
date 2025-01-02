@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload/types'
 
-const Socials: CollectionConfig = {
-  slug: 'socials',
+const WebActions: CollectionConfig = {
+  slug: 'webactions',
   admin: {
     useAsTitle: 'title',
   },
@@ -9,18 +9,18 @@ const Socials: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      required: true
     },
     {
-      name: 'slug',
+      name: 'value',
       type: 'text',
       required: true
     },
     {
-      name: 'bridgyEndpoint',
+      name: 'caption',
       type: 'text',
-    },
-  ],
+      localized: true,
+    }
+  ]
 }
 
-export default Socials
+export default WebActions;

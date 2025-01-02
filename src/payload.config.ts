@@ -7,6 +7,7 @@ import { buildConfig } from "payload/config";
 
 import {
   UploadFeature,
+  HeadingFeature
 } from '@payloadcms/richtext-lexical';
 import { CodeBlockFeature } from "payload-code-block-feature";
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
@@ -29,6 +30,7 @@ import Users from './collections/Users'
 import Notes from './collections/Notes'
 import Media from './collections/Media'
 import Tags from './collections/Tags'
+import WebActions from './collections/WebActions'
 
 export default buildConfig({
   serverURL : process.env.PAYLOAD_PUBLIC_SERVER_URL,
@@ -49,6 +51,7 @@ export default buildConfig({
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
         ...defaultFeatures,
+      HeadingFeature({}),
       CodeBlockFeature(),
       UploadFeature({
         collections: {
@@ -67,7 +70,7 @@ export default buildConfig({
       }),
     ]
   }),
-  collections: [Socials, Users, Notes, Media, Tags],
+  collections: [Socials, Users, Notes, Media, Tags, WebActions],
   plugins: [
     cloudStorage({
       collections: {
@@ -78,7 +81,8 @@ export default buildConfig({
     }),
   ],
   typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts'),
+    outputFile: path.resolve(__dirname, '../../blog/types', 'payload-types.ts'),
+    declare: false, // defaults to true if not set
   },
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
@@ -88,4 +92,18 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI,
     },
   }),
+  localization: {
+    locales: [
+      {
+        label: 'English',
+        code: 'en',
+      },
+      {
+        label: 'Russian',
+        code: 'ru',
+      },
+    ],
+    defaultLocale: 'ru',
+    fallback: true,
+  },
 })

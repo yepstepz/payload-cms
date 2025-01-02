@@ -30,8 +30,8 @@ export const ReplyContext: Block = {
     // required
     {
       name: 'typeOfReply',
-      type: 'select',
-      options: types
+      type: 'relationship',
+      relationTo: 'webactions'
     },
     {
       name: 'replyUrl',
@@ -50,6 +50,20 @@ export const ReplyContext: Block = {
           name: 'content'
         }
       ]
-    }
+    },
+    {
+      name: 'replyAuthor',
+      type: 'group',
+      fields: [
+        {
+          type: 'text',
+          name: 'name'
+        },
+        {
+          type: 'text',
+          name: 'url'
+        }
+      ]
+    },
   ],
 }
